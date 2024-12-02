@@ -238,7 +238,7 @@ button {
     gap: 24px;
 }
 
-.features-title {
+.visually-hidden {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -254,10 +254,6 @@ button {
 .features-item {
     width: calc((100% - 72px) / 4);
 }
-
-/* .features-item .icon {
-    fill: #2E2F42;
-} */
 
 .features-item > .icon-wrapper {
     display: flex;
@@ -503,6 +499,7 @@ button {
 
     opacity: 0;
     pointer-events: none;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-overlay.is-open {
@@ -512,9 +509,9 @@ button {
 
 .modal {
     background-color: #fcfcfc;
-    max-width: 408px;
-    height: 80%;
-    overflow-y: auto;
+    width: 408px;
+    height: 584px;
+    overflow: hidden;
 
     border-radius: 4px;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14),
@@ -542,13 +539,14 @@ button {
     fill: #2e2f42;
 }
 
-.close-link:hover, .close-link:focus {
+.close-link:hover {
     background-color: #404bbf;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.close-link:hover .icon.close-icon, 
-.close-link:focus .icon.close-icon{
+.close-link:hover .icon.close-icon {
     fill: #ffffff;  
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-title {
@@ -560,6 +558,7 @@ button {
     text-align: center;
     color: #2e2f42;
 
+    margin-right: 24px;
     margin-bottom: 16px;
     margin-left: 24px;
 }
@@ -570,6 +569,7 @@ button {
     flex-direction: column;
     gap: 8px;
 
+    margin-right: 24px;
     margin-left: 24px;
 }
 
@@ -590,6 +590,7 @@ button {
 
 .modal-input:focus + .modal-icon-wrapper > .icon.input-icon {
     fill: #4d5ae5;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-input {
@@ -603,6 +604,7 @@ button {
 
 .modal-input:focus {
     border-color: #4d5ae5;
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-input.comment-input {
@@ -610,7 +612,8 @@ button {
     height: 120px;
     padding-top: 8px;
     padding-left: 16px;
-    line-height: 1.2;
+    font-family: inherit;
+    line-height: 1.17;
     letter-spacing: 0.04em;
     resize: none;
     outline: transparent;
@@ -618,10 +621,12 @@ button {
 
 
 .comment-input::placeholder {
+    font-family: inherit;
     color: rgba(46, 47, 66, 0.4);
 }
 .comment-input:focus {
     border-color: #4d5ae5;
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-icon-wrapper {
@@ -645,19 +650,47 @@ button {
     color: #8e8f99;
 }
 
-.modal-form-field.modal-checkbox {
+.modal-form-agreement {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 8px;
+    margin-bottom: 16px;
+    position: relative;
 }
 
-.checkbox:focus {
+input[type="checkbox"]:checked + .modal-form-agreement-text > .modal-form-checkbox {
     background-color: #404bbf;
-
+    border-color: #404bbf;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.terms-accept {
+.modal-form-checkbox {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 16px;
+    height: 16px;
+    
+    cursor: pointer;
+    border-radius: 2px;
+    border: 1px solid rgba(46, 47, 66, 0.4);
+    margin-right: 8px;
+}
+
+.modal-form-checkbox-icon {
+    opacity: 0;
+}
+
+input[type="checkbox"]:checked + .modal-form-agreement-text >
+ .modal-form-checkbox > .modal-form-checkbox-icon {
+    opacity: 1;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-form-agreement-text {
     font-family: inherit;
     font-weight: 400;
     font-size: 12px;
@@ -669,6 +702,25 @@ button {
 .privacy-policy {
     text-decoration: underline;
     color: #4d5ae5;
+}
+
+.modal-btn {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    width: 169px;
+    height: 56px;
+    /* padding: 16px 32px; */
+    margin: 0 auto;
+
+    border: none;
+    border-radius: 4px;
+    background-color: #4d5ae5;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);    
+}
+.modal-btn:hover {
+    background-color: #404bbf;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Footer Section */
